@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Name:</strong>
-  <%= @cocktail.name %>
+  <strong>Name:</strong> <%= @cocktail.name %><br>
+
+  <strong>Recipe:</strong>
 </p>
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
+
+  <% @cocktail.doses.each do |dose|%>
+    <p><%= dose.description + " " + dose.ingredient.name%></p>
+  <% end %>
+
+
+<%= link_to 'Add recipe', new_cocktail_dose_path(@cocktail) %> |
 <%= link_to 'Back', cocktails_path %>
